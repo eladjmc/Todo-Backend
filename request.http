@@ -1,0 +1,74 @@
+@baseUrl = http://localhost:5001/api/v1
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiZWxhZEBleGFtcGxlLmNvbSIsImlkIjoiNjcyMjRlOWU0YjdhNzQzYjBjYjJiNzIzIn0sImlhdCI6MTczMDMwMTU5OCwiZXhwIjoxNzMwMzg3OTk4fQ.5MLCxh9pV9_G_Wkg2F3Vv7US3IWB75gqUlxWpeR5MRI
+@todoId = 67224f054b7a743b0cb2b72f
+
+
+
+### Register User
+POST {{baseUrl}}/users/register
+Content-Type: application/json
+
+{
+    "name": "Elad",
+    "age": 30,
+    "email": "elad@example.com",
+    "password": "123456"
+}
+
+
+### Login User
+POST {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+    "email": "elad@example.com",
+    "password": "123456"
+}
+
+
+### Get Current User Info
+GET {{baseUrl}}/users/current
+Authorization: Bearer {{accessToken}}
+
+
+### Delete User
+DELETE {{baseUrl}}/users/delete-user
+Authorization: Bearer {{accessToken}}
+
+
+### Get All Todos
+GET {{baseUrl}}/todos
+Authorization: Bearer {{accessToken}}
+
+
+### Create a Todo
+POST {{baseUrl}}/todos
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "title": "First Todo",
+    "description": "This is my first todo item"
+}
+
+
+
+### Update a Todo
+PUT {{baseUrl}}/todos/{{todoId}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "title": "Updated Todo",
+    "description": "This todo has been updated",
+    "completed": true
+}
+
+
+
+### Delete a Todo
+DELETE {{baseUrl}}/todos/{{todoId}}
+Authorization: Bearer {{accessToken}}
+
+
+
